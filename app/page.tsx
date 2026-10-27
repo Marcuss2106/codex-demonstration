@@ -66,6 +66,57 @@ const programs = [
   },
 ];
 
+const upcomingEvents = [
+  {
+    date: "2026-11-07",
+    month: "NOV",
+    day: "07",
+    weekday: "Saturday",
+    time: "10:00 AM–12:00 PM",
+    title: "Fall bed prep on Juniper Street",
+    location: "Juniper Street Garden · East Ward",
+    description:
+      "Clear finished plants and refresh the raised beds together.",
+    note: "Tools and warm cider provided. All ages welcome with a grown-up.",
+  },
+  {
+    date: "2026-11-14",
+    month: "NOV",
+    day: "14",
+    weekday: "Saturday",
+    time: "1:00–3:00 PM",
+    title: "Seed saving for next season",
+    location: "Bellwether Learning Garden · Northside",
+    description:
+      "Learn how to collect, label, and store seeds from this year’s harvest.",
+    note: "Bring a small envelope; seeds and supplies are provided.",
+  },
+  {
+    date: "2026-11-21",
+    month: "NOV",
+    day: "21",
+    weekday: "Saturday",
+    time: "9:30–11:30 AM",
+    title: "School garden winterizing",
+    location: "Maple Street School · West Ward",
+    description:
+      "Help students tuck in the beds and prepare the garden for winter.",
+    note: "Youth volunteers welcome with an accompanying adult.",
+  },
+  {
+    date: "2026-12-05",
+    month: "DEC",
+    day: "05",
+    weekday: "Saturday",
+    time: "2:00–3:30 PM",
+    title: "Neighborhood garden planning circle",
+    location: "Bellwether Community Room · Downtown",
+    description:
+      "Share ideas for next year’s growing season over tea and snacks.",
+    note: "Indoor gathering; step-free entrance available.",
+  },
+];
+
 function Asset({
   src,
   width,
@@ -441,24 +492,34 @@ export default function Home() {
         className="event-section page-width"
         id="events"
       >
-        <div className="event-panel">
-          <div className="event-copy">
-            <p className="eyebrow">Next Open Plot Day</p>
+        <div className="events-heading">
+          <div>
+            <p className="eyebrow">Gather, grow, and lend a hand</p>
             <h2 className="display-heading" id="event-title">
-              Fall bed prep on Juniper Street
+              Coming up in Bellwether
             </h2>
-            <p className="event-meta">
-              Saturday, Nov 7 <span>·</span> 10:00–12:00 <span>·</span> East
-              Ward
-            </p>
-            <p className="event-note">
-              Tools and warm cider provided. All ages welcome with a grown-up.
-            </p>
           </div>
-          <SecondaryLink href="mailto:hello@harborlightcommons.org?subject=Open%20Plot%20Day%20interest">
-            Join the workday
-          </SecondaryLink>
+          <p className="events-sample-label">Sample calendar · 2026</p>
         </div>
+        <ol aria-label="Upcoming sample events" className="events-list">
+          {upcomingEvents.map((event) => (
+            <li className="event-item" key={event.date}>
+              <time className="event-date" dateTime={event.date}>
+                <span>{event.month}</span>
+                <span>{event.day}</span>
+              </time>
+              <div className="event-details">
+                <p className="event-meta">
+                  {event.weekday} <span>·</span> {event.time}
+                </p>
+                <h3>{event.title}</h3>
+                <p className="event-location">{event.location}</p>
+                <p className="event-description">{event.description}</p>
+                <p className="event-note">{event.note}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <section
